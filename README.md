@@ -102,6 +102,32 @@ docker-compose up -d --build
 
 ---
 
-## 📄 License
+## � Delivery Notes
+
+### Run the project locally
+```powershell
+dotnet restore
+cd client
+npm install
+npm run dev
+```
+
+Then start the backend from the root folder:
+```powershell
+dotnet run --project src/MailPulse.API
+```
+
+### Demo accounts
+- Admin: `admin@mailpulse.com` / `Admin123!`
+- Demo user: `demo@mailpulse.com` / `Demo1234`
+
+### Delivery checklist
+- Build and tests already verified.
+- Git repository initialized locally.
+- ER diagram is available in [docs/ER_DIAGRAM.md](docs/ER_DIAGRAM.md).
+- Presentation text is available in [docs/PRESENTATION_TEXT.md](docs/PRESENTATION_TEXT.md).
+- Delivery checklist is available in [docs/DELIVERY_CHECKLIST.md](docs/DELIVERY_CHECKLIST.md).
+
+## �📄 License
 This project is licensed under the MIT License.
 
