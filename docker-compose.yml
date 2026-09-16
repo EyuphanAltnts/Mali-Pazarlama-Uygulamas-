@@ -1,0 +1,41 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: mailpulse_postgres
+    environment:
+      POSTGRES_DB: mailpulse
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  mailpulse-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mailpulse_api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=mailpulse;Username=postgres;Password=postgrespassword
+      - Jwt__Key=SuperSecretProductionReadyEncryptionKeyForMailPulse2026!
+      - Jwt__Issuer=MailPulse
+      - Jwt__Audience=MailPulseClient
+      - Encryption__Key=ProductionSecretEncryptionKeyMustBeStrong32Chars!
+    ports:
+      - "5000:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+

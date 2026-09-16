@@ -1,0 +1,6 @@
+@MailPulse.API_HostAddress = http://localhost:5212
+
+GET {{MailPulse.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

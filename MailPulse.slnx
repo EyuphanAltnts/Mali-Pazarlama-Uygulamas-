@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/MailPulse.API/MailPulse.API.csproj" />
+    <Project Path="src/MailPulse.Application/MailPulse.Application.csproj" />
+    <Project Path="src/MailPulse.Domain/MailPulse.Domain.csproj" />
+    <Project Path="src/MailPulse.Infrastructure/MailPulse.Infrastructure.csproj" />
+    <Project Path="src/MailPulse.Persistence/MailPulse.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/MailPulse.UnitTests/MailPulse.UnitTests.csproj" />
+  </Folder>
+</Solution>
