@@ -28,8 +28,13 @@ yarn-error.log*
 Thumbs.db
 
 ## Databases & Environment
+*.db
 *.db-journal
 *.db-shm
 *.db-wal
 appsettings.Local.json
+src/MailPulse.API/logs/
+logs/
+*.sqlite
+*.sqlite3
 

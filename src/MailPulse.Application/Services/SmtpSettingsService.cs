@@ -25,7 +25,7 @@ public class SmtpSettingsService : ISmtpSettingsService
 
     public async Task<SmtpSettingsDto?> GetSettingsAsync(CancellationToken ct = default)
     {
-        var settings = await _unitOfWork.SmtpSettings.Query().FirstOrDefaultAsync(ct);
+        var settings = await _unitOfWork.SmtpSettings.Query().OrderBy(s => s.CreatedAt).FirstOrDefaultAsync(ct);
         if (settings == null) return null;
 
         return new SmtpSettingsDto(
@@ -40,7 +40,7 @@ public class SmtpSettingsService : ISmtpSettingsService
 
     public async Task<SmtpSettingsDto> UpdateSettingsAsync(UpdateSmtpSettingsDto dto, CancellationToken ct = default)
     {
-        var settings = await _unitOfWork.SmtpSettings.Query().FirstOrDefaultAsync(ct);
+        var settings = await _unitOfWork.SmtpSettings.Query().OrderBy(s => s.CreatedAt).FirstOrDefaultAsync(ct);
 
         if (settings == null)
         {
